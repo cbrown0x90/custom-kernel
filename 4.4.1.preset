@@ -1,14 +1,14 @@
 # mkinitcpio preset file for the 'linux' package
 
 ALL_config="/etc/mkinitcpio.conf"
-ALL_kver="/boot/EFI/Arch/4.3.5-ULM"
+ALL_kver="/boot/4.4.1-ULM"
 
 PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
-default_image="/boot/EFI/Arch/initramfs-4.3.5.img"
+default_image="/boot/initramfs-4.4.1.img"
 #default_options=""
 
 #fallback_config="/etc/mkinitcpio.conf"
-fallback_image="/boot/EFI/Arch/initramfs-4.3.5-fallback.img" 
+fallback_image="/boot/initramfs-4.4.1-fallback.img" 
 fallback_options="-S autodetect"
