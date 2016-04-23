@@ -5,9 +5,9 @@ license=('GPL')
 arch=('x86_64')
 install=${pkgname}.install
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/linux-${pkgver}.tar.xz"
-		"$pkgver.config"
-		"logo_linux_clut224.ppm"
-		"$pkgver.preset")
+		"https://raw.githubusercontent.com/free-city-of-ulm/custom-kernel/master/Sources/${pkgver}.config"
+		"https://raw.githubusercontent.com/free-city-of-ulm/custom-kernel/master/Sources/logo_linux_clut224.ppm"
+		"https://raw.githubusercontent.com/free-city-of-ulm/custom-kernel/master/Sources/${pkgver}.preset")
 md5sums=('488fac47d1c73e8a21ac71f7f3121009'
 		'0e2436cf9c54f118b45e38ce45abe27c'
 		'c1b7315081daa2ebec1548b2d6ded197'
