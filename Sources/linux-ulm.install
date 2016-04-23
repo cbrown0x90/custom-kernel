@@ -1,0 +1,11 @@
+post_install() {
+  # updating module dependencies
+  echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
+  mkinitcpio -p linux-ulm
+}
+
+post_upgrade() {
+  # updating module dependencies
+  echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
+  mkinitcpio -p linux-ulm
+}
