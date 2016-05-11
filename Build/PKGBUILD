@@ -1,5 +1,5 @@
 pkgname=linux-ulm
-pkgver=4.5.3
+pkgver=4.5.4
 pkgrel=1
 license=('GPL')
 arch=('x86_64')
