@@ -1,0 +1,16 @@
+#!/bin/bash
+
+OLDVERSION=4.6.2
+VERSION=4.7.0
+
+cp /bin/busybox /usr/src/initramfs/bin
+cp /sbin/cryptsetup /usr/src/initramfs/bin
+rm -rf /usr/src/initramfs/lib/modules/$OLDVERSION-ULM
+mkdir -p /usr/src/initramfs/lib64/modules/$VERSION-ULM/kernel
+cp /lib/modules/$VERSION-ULM/kernel/crypto/xor.ko.gz /usr/src/initramfs/lib64/modules/$VERSION-ULM/kernel
+cp /lib/modules/$VERSION-ULM/kernel/fs/{btrfs/btrfs.ko.gz,nls/nls_cp437.ko.gz} /usr/src/initramfs/lib64/modules/$VERSION-ULM/kernel
+cp /lib/modules/$VERSION-ULM/kernel/lib/{zlib_deflate/zlib_deflate.ko.gz,raid6/raid6_pq.ko.gz} /usr/src/initramfs/lib64/modules/$VERSION-ULM/kernel
+depmod -b /usr/src/initramfs $VERSION-ULM
+
+cd /usr/src/initramfs/
+find . -print0 | cpio --null -ov --format=newc | gzip -9 > /boot/$VERSION-initramfs.cpio.gz
