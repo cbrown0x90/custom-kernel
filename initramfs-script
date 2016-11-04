@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=4.7.6
+VERSION=4.8.5
 
 cp /bin/busybox /usr/src/initramfs/bin
 cp /sbin/cryptsetup /usr/src/initramfs/bin
