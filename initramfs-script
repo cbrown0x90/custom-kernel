@@ -1,8 +1,7 @@
 #!/bin/bash
-VERSION=4.9.5
-
+#VERSION=4.9.5
 cp /bin/busybox /usr/src/initramfs/bin
 cp /sbin/cryptsetup /usr/src/initramfs/bin
 
 cd /usr/src/initramfs/
-find . -print0 | cpio --null -ov --format=newc | gzip -9 > /boot/initramfs-$VERSION.img
+find . -print0 | cpio --null -ov --format=newc | gzip -9 > /boot/gentoo/initramfs-$1.img
