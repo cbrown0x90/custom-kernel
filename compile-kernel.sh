@@ -1,19 +1,23 @@
 #!/bin/bash
 
 VERSION=$(pwd | awk '{print substr($0, match($0, "[0-9]"))}')
+readonly dest_dir="/boot/gentoo"
 
-cp /home/chris/Documents/custom-kernel/linux-ulm.config .config
+cp -v /home/chris/Documents/custom-kernel/linux-ulm.config .config
 make -j4
 make modules_install
 KERNUM=$(eselect kernel list | awk -v ver=$VERSION '$2 ~ ver {print substr($1, index($1, "[") + 1, index($1, "]") - 2)}')
 eselect kernel set $KERNUM
 
-cp .config /home/chris/Documents/custom-kernel/linux-ulm.config
+cp -v .config /home/chris/Documents/custom-kernel/linux-ulm.config
 
-test ! -d /boot/gentoo && echo -n "Insert USB" && read
+test ! -d $dest_dir && echo "insert USB"
+while test ! -d $dest_dir; do
+    sleep 0.5
+done
 
-mv /boot/gentoo/* /boot/kernels/gentoo-old/
-cp arch/x86/boot/bzImage /boot/gentoo/vmlinuz-$VERSION
+mv -v /boot/gentoo/* /boot/kernels/gentoo-old/
+cp -v arch/x86/boot/bzImage /boot/gentoo/vmlinuz-$VERSION
 /home/chris/Documents/custom-kernel/initramfs-script $VERSION
 
 umount /boot
