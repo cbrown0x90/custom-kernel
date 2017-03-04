@@ -5,7 +5,7 @@ VERSION=$(pwd | awk '{print substr($0, match($0, "[0-9]"))}')
 cp /home/chris/Documents/custom-kernel/linux-ulm.config .config
 make -j4
 make modules_install
-KERNUM=$(eselect kernel list | awk '/\[[0-9]\]/{print substr($1, index($1, "[") + 1, index($1, "]") - 2)}' | sort -r | head -1)
+KERNUM=$(eselect kernel list | awk -v ver=$VERSION '$2 ~ ver {print substr($1, index($1, "[") + 1, index($1, "]") - 2)}')
 eselect kernel set $KERNUM
 
 cp .config /home/chris/Documents/custom-kernel/linux-ulm.config
