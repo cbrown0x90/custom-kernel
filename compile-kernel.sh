@@ -4,8 +4,23 @@ VERSION=$(pwd | awk '{print substr($0, match($0, "[0-9]"))}')
 readonly dest_dir="/boot/gentoo"
 
 cp -v /home/chris/Documents/custom-kernel/linux-ulm.config .config
-#cp /bin/busybox /usr/src/initramfs/bin
-#cp /sbin/cryptsetup /usr/src/initramfs/bin
+
+cp /bin/busybox /usr/src/initramfs/bin
+cp /sbin/cryptsetup /usr/src/initramfs/bin
+cp -L /usr/lib64/libcryptsetup.so.12 /usr/src/initramfs/usr/lib64/libcryptsetup.so.12
+cp -L /usr/lib64/libpopt.so.0 /usr/src/initramfs/usr/lib64/libpopt.so.0
+cp -L /lib64/libuuid.so.1 /usr/src/initramfs/usr/lib64/libuuid.so.1
+cp -L /lib64/libc.so.6 /usr/src/initramfs/usr/lib64/libc.so.6
+cp -L /lib64/libdevmapper.so.1.02 /usr/src/initramfs/usr/lib64/libdevmapper.so.1.02
+cp -L /usr/lib64/libcrypto.so.1.0.0 /usr/src/initramfs/usr/lib64/libcrypto.so.1.0.0
+cp -L /usr/lib64/libargon2.so.1 /usr/src/initramfs/usr/lib64/libargon2.so.1
+cp -L /usr/lib64/libjson-c.so.3 /usr/src/initramfs/usr/lib64/libjson-c.so.3
+cp -L /lib64/ld-linux-x86-64.so.2 /usr/src/initramfs/usr/lib64/ld-linux-x86-64.so.2
+cp -L /lib64/librt.so.1 /usr/src/initramfs/usr/lib64/librt.so.1
+cp -L /lib64/libpthread.so.0 /usr/src/initramfs/usr/lib64/libpthread.so.0
+cp -L /lib64/libm.so.6 /usr/src/initramfs/usr/lib64/libm.so.6
+cp -L /lib64/libdl.so.2 /usr/src/initramfs/usr/lib64/libdl.so.2
+cp -L /lib64/libz.so.1 /usr/src/initramfs/usr/lib64/libz.so.1
 
 make -j8
 make modules_install
